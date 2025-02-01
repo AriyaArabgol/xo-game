@@ -22,6 +22,14 @@
 
 export default {
   name: 'App',
+  data(){
+    return{
+    GameOver:false,
+    currentplayer:'x',
+    massage:'نوبت بازیکن x',
+    board:Array(9).fill(''),
+  }
+}
 
 }
 </script>
