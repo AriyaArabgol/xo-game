@@ -6,8 +6,9 @@
 
         {{ cell }}
       </div>
-<p class="massage">{{massage}}</p>
-<button class="reset" @click="resetGame">شروع مجدد بازی</button>
+      <p class="massage">{{massage}}</p>
+
+      <button class="reset" @click="resetGame">شروع مجدد بازی</button>
 
 
     </div>
@@ -34,7 +35,7 @@ methods:{
   makemove(index){
     if(this.board[index] ==='' && !this.GameOver){
       this.board[index]=this.currentplayer
-      if(this.checkWinner){
+      if(this.checkWinner()){
         this.massage=` برنده شد بازیکن ${this.currentplayer}`;
         this.GameOver=true;
       }
@@ -42,7 +43,7 @@ methods:{
         this.massage= `بازی مساوی شد `;
         this.GameOver=true;
       }
-      this.currentplayer=this.currentplayer==='x'?'o' : 'x'
+      this.currentplayer=this.currentplayer==='x'?'o':'x'
       this.massage= ` نوبت بازیکن ${this.currentplayer}`
     }
   },
@@ -71,5 +72,46 @@ methods:{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
+.borad{
+  display: grid;
+  grid-template-columns: repeat(3,100px);
+  grid-gap: 1px;
+  margin-top: 20px;
+  justify-content: center;
 
+}
+.cell{
+  width: 100px;
+  height: 100px;
+  background-color: rgb(59, 204, 23);
+  display: flex;
+  cursor: pointer;
+  border: 2px solid black;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+
+}
+.cell:hover{
+  background-color: aqua;
+}
+.massage{
+  font-weight: bold;
+  font-size: 17px;
+  margin-top: 19px;
+  
+}
+.reset{
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(18, 33, 167);
+    font-size: 19px;
+    cursor: pointer;
+    color:white
+}
+.reset:hover{
+    background-color: rgb(155, 7, 88);
+}
 </style>
