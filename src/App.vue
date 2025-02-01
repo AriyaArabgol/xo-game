@@ -29,6 +29,24 @@ export default {
     massage:'نوبت بازیکن x',
     board:Array(9).fill(''),
   }
+},
+methods:{
+  makemove(index){
+    if(this.board[index] ==='' && !this.GameOver){
+      this.board[index]=this.currentplayer
+      if(this.checkWinner){
+        this.massage=` برنده شد بازیکن ${this.currentplayer}`;
+        this.GameOver=true;
+      }
+      if(!this.board.includes('')){
+        this.massage= `بازی مساوی شد `;
+        this.GameOver=true;
+      }
+      this.currentplayer=this.currentplayer==='x'?'o' : 'x'
+      this.massage= ` نوبت بازیکن ${this.currentplayer}`
+    }
+  },
+  
 }
 
 }
