@@ -56,10 +56,10 @@ methods:{
     })
   },
   resetGame(){
-    GameOver=false,
-    currentplayer='x',
-    massage='نوبت بازیکن x',
-    board=Array(9).fill('')
+    this.GameOver=false,
+    this.currentplayer='x',
+    this.massage='نوبت بازیکن x',
+    this.board=Array(9).fill('')
   }
 }
 
