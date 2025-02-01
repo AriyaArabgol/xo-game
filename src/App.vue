@@ -3,18 +3,11 @@
     <h1>xo game</h1>
     <div class="borad">
       <div v-for="(cell , index ) in board" :key="index" class="cell" @click="makemove(index)">
-
         {{ cell }}
       </div>
-      <p class="massage">{{massage}}</p>
-
-      <button class="reset" @click="resetGame">شروع مجدد بازی</button>
-
-
     </div>
-
-
-
+    <p class="massage" > {{ massage }}</p>
+      <button class="reset" @click="resetGame">Restart the game</button>
   </div>
 </template>
 
@@ -27,24 +20,26 @@ export default {
     return{
     GameOver:false,
     currentplayer:'x',
-    massage:'نوبت بازیکن x',
+    massage:`Player X's turn`,
     board:Array(9).fill(''),
   }
 },
 methods:{
   makemove(index){
     if(this.board[index] ==='' && !this.GameOver){
-      this.board[index]=this.currentplayer
+      this.board[index]=this.currentplayer;
       if(this.checkWinner()){
-        this.massage=` برنده شد بازیکن ${this.currentplayer}`;
+        this.massage=`🎉 Player ${this.currentplayer} wins! Congratulations!`;
         this.GameOver=true;
+        return;
       }
       if(!this.board.includes('')){
-        this.massage= `بازی مساوی شد `;
+        this.massage= `It's a draw!`
         this.GameOver=true;
+        return;
       }
       this.currentplayer=this.currentplayer==='x'?'o':'x'
-      this.massage= ` نوبت بازیکن ${this.currentplayer}`
+      this.massage= `Player ${this.currentplayer}'s turn`
     }
   },
   checkWinner(){
@@ -59,7 +54,7 @@ methods:{
   resetGame(){
     this.GameOver=false,
     this.currentplayer='x',
-    this.massage='نوبت بازیکن x',
+    this.massage=`Player X's turn`,
     this.board=Array(9).fill('')
   }
 }
@@ -68,6 +63,9 @@ methods:{
 </script>
 
 <style>
+*{
+  background-color: rgb(0, 255, 255);
+}
 .continer{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -83,7 +81,7 @@ methods:{
 .cell{
   width: 100px;
   height: 100px;
-  background-color: rgb(59, 204, 23);
+  background-color: rgb(255, 240, 245)  ;
   display: flex;
   cursor: pointer;
   border: 2px solid black;
@@ -94,7 +92,7 @@ methods:{
 
 }
 .cell:hover{
-  background-color: aqua;
+  background-color: rgb(173, 216, 230);
 }
 .massage{
   font-weight: bold;
@@ -114,4 +112,5 @@ methods:{
 .reset:hover{
     background-color: rgb(155, 7, 88);
 }
+
 </style>
