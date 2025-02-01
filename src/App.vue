@@ -54,6 +54,12 @@ methods:{
       const [a,b,c] = patterns
       return this.board[a] && this.board[a]===this.board[b] && this.board[a] === this.board[c]
     })
+  },
+  resetGame(){
+    GameOver=false,
+    currentplayer='x',
+    massage='نوبت بازیکن x',
+    board=Array(9).fill('')
   }
 }
 
